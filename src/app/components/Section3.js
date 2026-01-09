@@ -1,7 +1,9 @@
+"use client"
 import React from 'react'
 import { Lavishly_Yours, Bricolage_Grotesque } from "next/font/google";
-// import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Carousel from './features/carousel';
+
 
 const LavishlyYours = Lavishly_Yours({
   subsets: ["latin"],
@@ -12,12 +14,86 @@ const BricolageGrotesque = Bricolage_Grotesque({
 });
 
 const Section3 = () => {
+const ref1 = useRef(null)
+const ref2 = useRef(null)
+const ref3 = useRef(null)
+const ref4 = useRef(null)
+const [visible1, setVisible1] = useState(false);
+const [visible2, setVisible2] = useState(false);
+const [visible3, setVisible3] = useState(false);
+const [visible4, setVisible4] = useState(false);
+
+useEffect(() => {
+  const observer1 = new IntersectionObserver(
+    
+    ([entry])=>{
+       console.log("Intersecting:", entry.isIntersecting);
+        if(entry.isIntersecting){
+            setVisible1(true);
+            observer1.disconnect();
+        }
+    },
+    {threshold: 0.25}
+  );
+  const observer2 = new IntersectionObserver(
+    
+    ([entry])=>{
+       console.log("Intersecting:", entry.isIntersecting);
+        if(entry.isIntersecting){
+            setVisible2(true);
+            observer2.disconnect();
+        }
+    },
+    {threshold: 0.25}
+  );
+  const observer3 = new IntersectionObserver(
+    
+    ([entry])=>{
+       console.log("Intersecting:", entry.isIntersecting);
+        if(entry.isIntersecting){
+            setVisible3(true);
+            observer3.disconnect();
+        }
+    },
+    {threshold: 0.25}
+  );
+  const observer4 = new IntersectionObserver(
+    
+    ([entry])=>{
+       console.log("Intersecting:", entry.isIntersecting);
+        if(entry.isIntersecting){
+            setVisible4(true);
+
+            observer4.disconnect();
+        }
+    },
+    {threshold: 0.25}
+  );
+
+  if(ref1.current){
+    observer1.observe(ref1.current);
+  }
+  if(ref2.current){
+    observer2.observe(ref2.current);
+  }
+  if(ref3.current){
+    observer3.observe(ref3.current);
+  }
+  if(ref4.current){
+    observer4.observe(ref4.current);
+  }
+  return () => {observer1.disconnect(), observer2.disconnect(), observer3.disconnect(), observer4.disconnect();}
+  
+}, []);
+
+
   return (
     <div>
       <div>
-        <h1 className={`${BricolageGrotesque.className} font-bold text-5xl text-white text-center py-15`}>Work</h1>
+        <h1 id={"work"} className={`${BricolageGrotesque.className} font-bold text-5xl text-white text-center py-15`}>Work</h1>
         <div className='flex flex-col justify-center items-center gap-20'>
-          <div className='bg-[#282828] p-14 rounded-3xl hover:cursor-pointer float-parent hover:transition-all duration-800 hover:scale-95 hover:bg-[#1c1c1c]'>
+
+          <div ref={ref1} className={`bg-[#282828] p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible1 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4 duration-1000"} delay-0 `}>
             <div className='flex gap-20'>
               <div className='flex flex-col gap-10'>
                 <div className='flex flex-col gap-10'>
@@ -55,7 +131,7 @@ const Section3 = () => {
             </div>
           </div>
 
-          <div className='bg-[#282828] p-14 rounded-3xl hover:cursor-pointer float-parent hover:transition-all duration-800 hover:scale-95 hover:bg-[#1c1c1c]'>
+          <div ref={ref2} className={`bg-[#282828] p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible2 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4"} delay-0`}>
             <div className='flex gap-5 items-center '>
               <div className='w-80 h-80 flex justify-center items-center'>
                 <img className=' w-100 h-100 object-contain drop-shadow-2xl float-child' src="/img/project1.png" alt="" />
@@ -95,7 +171,7 @@ const Section3 = () => {
             </div>
           </div>
 
-          <div className='bg-[#282828] p-14 rounded-3xl hover:cursor-pointer float-parent hover:transition-all duration-800 hover:scale-95 hover:bg-[#1c1c1c]'>
+          <div ref={ref3} className={`bg-[#282828] p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible3 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4"} delay-0`}>
             <div className='flex gap-5 items-center w-full'>
               <div className='flex flex-col gap-10 w-1/2'>
                 <div className='flex flex-col gap-10'>
@@ -140,7 +216,7 @@ const Section3 = () => {
             </div>
           </div>
 
-          <div className='bg-[#282828] p-14 rounded-3xl hover:cursor-pointer float-parent hover:transition-all duration-800 hover:scale-95 hover:bg-[#1c1c1c]'>
+          <div ref={ref4} className={`bg-[#282828] p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible4 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4"} delay-0`}>
             <div className='flex items-center gap-10'>
               <div className='w-80 h-80 flex justify-center items-center'>
                 <img className='rounded-full w-100 h-100 object-cover drop-shadow-2xl float-child' src="/img/spotify.png" alt="" />
