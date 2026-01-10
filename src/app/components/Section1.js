@@ -1,7 +1,7 @@
 "use client"
 import { Bebas_Neue } from "next/font/google";
 import Navbar from "./Navbar";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const bebasNeue = Bebas_Neue({
   subsets: ["latin"],

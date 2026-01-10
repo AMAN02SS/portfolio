@@ -30,15 +30,15 @@ const Section5 = () => {
             observer.observe(ref.current);
         }
 
-        return () => observer1.disconnect();
+        return () => observer.disconnect();
     }, []);
 
     return (
         <div>
             <div className='pb-10'>
                 <h1 id={"about"} className={`${BricolageGrotesque.className} font-bold text-5xl text-white text-center pb-15`}>About me</h1>
-                <div className='flex flex-col justify-center items-center gap-20'>
-                    <div ref={ref} className={`flex flex-col gap-10 text-[40px] text-[#a9a9a9] text-center w-300 transition-all duration-2000 ease-out will-change-[opacity,filter,transform] ${visible ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4 duration-1000"} delay-0`}>
+                <div className='flex flex-col justify-center items-center mx-3'>
+                    <div ref={ref} className={`flex flex-col gap-5 leading-14 md:gap-10 text-3xl md:text-[40px] text-[#a9a9a9] text-center w-fit md:w-300 transition-all duration-2000 ease-out will-change-[opacity,filter,transform] ${visible ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4 duration-1000"} delay-0`}>
                         <h1>
                             Hi, I’m Aman Singh Sikarwar, <span className={`${BricolageGrotesque.className} font-bold text-[white]`}>born and based in Gwalior, Madhya Pradesh</span> — "a city that keeps me close to history, culture, and quiet everyday inspiration".
                         </h1>
