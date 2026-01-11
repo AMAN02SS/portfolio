@@ -37,7 +37,7 @@ export default function ImageCarousel() {
   };
 
   return (
-    <div className="carousel-wrapper">
+    <div className="carousel-wrapper absolute scale-55 -top-7 md:scale-85 md:top-7">
       <div
         ref={carouselRef}
         onScroll={handleScroll}

@@ -28,6 +28,19 @@ const Section6 = () => {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    check(); // run once on mount
+    window.addEventListener("resize", check);
+
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -78,10 +91,10 @@ const Section6 = () => {
         max: 100,
         pointLabels: {
           font: {
-            size: 18,   // 👈 Increase this number
+            size: isMobile ? 12 : 18,
             weight: "600",
           },
-          color: "#ffffff", // label color
+          color: "#ffffff",
         },
         ticks: {
           backdropColor: "transparent",
@@ -113,57 +126,41 @@ const Section6 = () => {
       <div ref={sectionRef} className={`${BricolageGrotesque.className} text-white text-center flex flex-col md:flex-row justify-center md:justify-evenly w-fit md:w-400 mx-auto gap-10`}>
         <div className={`w-fit md:w-1/2 transition-all duration-1000 ease-out ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-24"}`}>
           <h1 className={`${BricolageGrotesque.className} font-bold text-2xl text-white text-center`}>Technical Skills</h1>
-          <div className='w-screen md:w-full my-10 md:my-25 grid grid-cols-2 md:grid-cols-2 flex-col justify-center gap-4 md:gap-10'>
+          <div className='w-screen md:w-full my-10 md:my-25 grid grid-cols-2 md:grid-cols-2 flex-col justify-center gap-2 md:gap-10'>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/html5.png" alt="" width={100} height={100} />
+              <img src="/img/skills/html5.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>HTML</h1>
-                <div>
-
-                </div>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/css3.png" alt="" width={100} height={100} />
+              <img src="/img/skills/css3.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>CSS</h1>
-                <div>
-
-                </div>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/nodejs.png" alt="" width={100} height={100} />
+              <img src="/img/skills/nodejs.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>Node</h1>
-                <div>
-
-                </div>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/javascript.png" alt="" className='rounded-full md:rounded-none' width={100} height={100} />
+              <img src="/img/skills/javascript.png" alt="" className='rounded-full md:rounded-none w-10 h-10 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>Javascript</h1>
-                <div>
-
-                </div>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/python.png" alt="" width={100} height={100} />
+              <img src="/img/skills/python.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>Python</h1>
-                <div>
-                </div>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/react.png" alt="" width={100} height={100} />
+              <img src="/img/skills/react.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>React</h1>
-                <div>
-                </div>
               </div>
             </div>
           </div>
@@ -171,8 +168,8 @@ const Section6 = () => {
         <div className={`w-full md:w-1/2 transform transition-all duration-1000 ease-out delay-200 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-24"}`}>
           <h1 className={`${BricolageGrotesque.className} font-bold text-2xl text-white text-center`}>Professional Skills</h1>
           <div className='flex md:justify-center md:items-center float-parent'>
-            <div className='w-screen md:w-150 h-100 md:h-150 float-child object-center' >
-              <Radar width={400} height={400} data={data} options={options} />
+            <div className='w-screen md:w-150 h-100 md:h-150 float-child object-cover ' >
+              <Radar data={data} options={options} />
             </div>
           </div>
         </div>

@@ -28,10 +28,10 @@ const Section1 = () => {
         <div className={`w-50 md:h-10 md:w-90 absolute z-2 top-20 md:top:150 transition-all duration-700 ease-out ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} delay-200`}>
           <img className="rounded-full h-70 md:h-140 object-cover" src="/img/section1Pic3.jpg" alt="" />
         </div>
-        <div className={`${bebasNeue.className} text-[6.75rem] md:text-[20.75rem] text-center text-[#ffffff] absolute z-3 top-35 md:top-95 leading-100 transition-all duration-700 ease-out ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} delay-300`}>
+        <div className={`${bebasNeue.className} text-[5.75rem] md:text-[20.75rem] text-center text-[#ffffff] absolute z-3 top-35 md:top-95 leading-100 transition-all duration-700 ease-out ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} delay-300`}>
           <span>AMAN SINGH</span>
         </div>
-        <h1 className={`absolute top-100 md:top-180 md:text-3xl text-[#FFFFFF66] md:text-[#FFFFFF] font-medium z-10 w-50 text-center md:w-auto transition-all duration-700 ease-out ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} delay-400`}>A Full Stack Developer, who loves to travel!</h1>
+        <h1 className={`absolute top-100 md:top-180 md:text-3xl text-[#FFFFFF66] md:text-[#FFFFFF] font-medium z-10 w-50 text-center md:w-auto transition-all duration-700 ease-out ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} delay-400`}>A Full Stack Developer, who loves the Challanges!</h1>
       </div>
     </div>
 

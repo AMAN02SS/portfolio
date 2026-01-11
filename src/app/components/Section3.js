@@ -14,77 +14,77 @@ const BricolageGrotesque = Bricolage_Grotesque({
 });
 
 const Section3 = () => {
-const ref1 = useRef(null)
-const ref2 = useRef(null)
-const ref3 = useRef(null)
-const ref4 = useRef(null)
-const [visible1, setVisible1] = useState(false);
-const [visible2, setVisible2] = useState(false);
-const [visible3, setVisible3] = useState(false);
-const [visible4, setVisible4] = useState(false);
+  const ref1 = useRef(null)
+  const ref2 = useRef(null)
+  const ref3 = useRef(null)
+  const ref4 = useRef(null)
+  const [visible1, setVisible1] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+  const [visible3, setVisible3] = useState(false);
+  const [visible4, setVisible4] = useState(false);
 
-useEffect(() => {
-  const observer1 = new IntersectionObserver(
-    
-    ([entry])=>{
-       console.log("Intersecting:", entry.isIntersecting);
-        if(entry.isIntersecting){
-            setVisible1(true);
-            observer1.disconnect();
-        }
-    },
-    {threshold: 0.25}
-  );
-  const observer2 = new IntersectionObserver(
-    
-    ([entry])=>{
-       console.log("Intersecting:", entry.isIntersecting);
-        if(entry.isIntersecting){
-            setVisible2(true);
-            observer2.disconnect();
-        }
-    },
-    {threshold: 0.25}
-  );
-  const observer3 = new IntersectionObserver(
-    
-    ([entry])=>{
-       console.log("Intersecting:", entry.isIntersecting);
-        if(entry.isIntersecting){
-            setVisible3(true);
-            observer3.disconnect();
-        }
-    },
-    {threshold: 0.25}
-  );
-  const observer4 = new IntersectionObserver(
-    
-    ([entry])=>{
-       console.log("Intersecting:", entry.isIntersecting);
-        if(entry.isIntersecting){
-            setVisible4(true);
+  useEffect(() => {
+    const observer1 = new IntersectionObserver(
 
-            observer4.disconnect();
+      ([entry]) => {
+        console.log("Intersecting:", entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setVisible1(true);
+          observer1.disconnect();
         }
-    },
-    {threshold: 0.25}
-  );
+      },
+      { threshold: 0.25 }
+    );
+    const observer2 = new IntersectionObserver(
 
-  if(ref1.current){
-    observer1.observe(ref1.current);
-  }
-  if(ref2.current){
-    observer2.observe(ref2.current);
-  }
-  if(ref3.current){
-    observer3.observe(ref3.current);
-  }
-  if(ref4.current){
-    observer4.observe(ref4.current);
-  }
-  return () => {observer1.disconnect(), observer2.disconnect(), observer3.disconnect(), observer4.disconnect();}
-  
-}, []);
+      ([entry]) => {
+        console.log("Intersecting:", entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setVisible2(true);
+          observer2.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    const observer3 = new IntersectionObserver(
+
+      ([entry]) => {
+        console.log("Intersecting:", entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setVisible3(true);
+          observer3.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    const observer4 = new IntersectionObserver(
+
+      ([entry]) => {
+        console.log("Intersecting:", entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setVisible4(true);
+
+          observer4.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    if (ref1.current) {
+      observer1.observe(ref1.current);
+    }
+    if (ref2.current) {
+      observer2.observe(ref2.current);
+    }
+    if (ref3.current) {
+      observer3.observe(ref3.current);
+    }
+    if (ref4.current) {
+      observer4.observe(ref4.current);
+    }
+    return () => { observer1.disconnect(), observer2.disconnect(), observer3.disconnect(), observer4.disconnect(); }
+
+  }, []);
 
 
   return (
@@ -171,52 +171,47 @@ useEffect(() => {
             </div>
           </div>
 
-          <div ref={ref3} className={`bg-[#282828] p-5 m-3 md:p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible3 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4"} delay-0`}>
-            <div className='flex flex-col md:flex-row gp-2 md:gap-5 items-center md:w-full'>
-              <div className='flex flex-col gap-4 md:gap-10 md:w-1/2'>
-                <div className='flex flex-col gap-2 md:gap-10'>
-                  <div>
+          <div ref={ref3} className={`bg-[#282828] p-5 m-3 md:p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible3 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4 duration-1000"} delay-0 `}>
+            <div className='flex flex-col md:flex-row gap-4 md:gap-5'>
+              <div className='flex flex-col gap-3 md:gap-10'>
+                <div className='flex flex-col gap-5 md:gap-10'>
+                 <div>
                     <h1 className={`${BricolageGrotesque.className} text-white text-3xl md:text-5xl w-fit md:w-200 md:leading-14`}>
                       <span className='text-green-400 font-semibold'>Helping Hands Foundation</span> :
                     </h1>
                     <h1 className={`${BricolageGrotesque.className} text-white text-3xl md:text-5xl w-fit md:w-200 md:leading-14`}>Serving humanity with care</h1>.
                   </div>
-                  <div className='flex w-fit md:w-lg'>
-                    <div className='flex flex-col gap-2 w-1/2 '>
+                  <div className='flex w-full gap-2'>
+                    <div className='flex flex-col gap-2 w-full '>
                       <h1 className={`${BricolageGrotesque.className} text-white font-bold text-2xl`}>Role</h1>
-                      <div className={`${BricolageGrotesque.className} text-[#8b8b8b] text-xl md:text-2xl font-semibold`}>
+                      <div className={`${BricolageGrotesque.className} text-[#8b8b8b] text-xl  md:text-2xl font-semibold`}>
                         <p>Frontend Engineer,</p>
                         <p>API Developer,</p>
                         <p>System Designer,</p>
                       </div>
                     </div>
-                    <div className='flex flex-col gap-2 w-1/2 '>
+                    <div className='flex flex-col gap-2 w-full '>
                       <h1 className={`${BricolageGrotesque.className} text-white font-bold text-2xl`}>Timeline</h1>
                       <div className={`${BricolageGrotesque.className} text-[#8b8b8b] text-xl md:text-2xl font-semibold`}>
-                        <p>November'25</p>
+                        <p>November'24-May'25</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className=''>
                   <div className={`${BricolageGrotesque.className} text-green-400 font-bold text-xl md:text-2xl flex gap-2 hover:cursor-pointer`}>
-                    <h1>View Project</h1><img className='' src="/svg/arrow.svg" alt="" />
+                    <h1>View Journey</h1><img className='' src="/svg/arrow.svg" alt="" />
                   </div>
                 </div>
               </div>
-              <div className='w-full md:w-1/2 relative'>
-                <img className='absolute top-12 md:top-10 md:left-10 float-child' src="/img/moniterWB.png" alt="" />
-                <div className='w-fit md:w-80 h-70 md:h-100 object-cover drop-shadow-2xl float-child z-20'>
-
-                  <div className='absolute top-7 -left-3 md:top-[75px] md:left-[120px] z-100 scale-70 md:scale-100'>
-                    <Carousel />
-                  </div>
-                </div>
+              <div className='flex justify-center items-center pt-4 relative w-80 float-child'>
+                <img className='w-52 md:w-80 h-50 md:h-70 object-cover drop-shadow-2xl ' src="/img/moniterWB.png" alt="" />
+                <Carousel/>
               </div>
             </div>
           </div>
 
-          <div ref={ref4} className={`bg-[#282828] p-5 m-3 md:p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible4 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4"} delay-0`}>
+          <div ref={ref4} className={`bg-[#282828] px-5 py-10 m-3 md:p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible4 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4"} delay-0`}>
             <div className='flex md:flex-row flex-col items-center gap-2 md:gap-10'>
               <div className='w-50 md:w-80 h-50 md:h-80 flex justify-center items-center'>
                 <img className='rounded-full w-full md:w-100 h-full md:h-100 object-cover drop-shadow-2xl float-child' src="/img/spotify.png" alt="" />
