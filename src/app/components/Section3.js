@@ -122,7 +122,7 @@ const Section3 = () => {
                 </div>
                 <div className=''>
                   <div className={`${BricolageGrotesque.className} text-green-400 font-bold text-xl md:text-2xl flex gap-2 hover:cursor-pointer`}>
-                    <Link href={"https://www.bitglim.com/"}><h1>View Journey</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
+                    <Link className='flex' href={"https://www.bitglim.com/"}><h1>View Journey</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
                   </div>
                 </div>
               </div>
@@ -165,7 +165,7 @@ const Section3 = () => {
                 </div>
                 <div className=''>
                   <div className={`${BricolageGrotesque.className} text-green-400 font-bold text-xl md:text-2xl flex gap-2 hover:cursor-pointer`}>
-                    <Link href={"https://github.com/AMAN02SS/linktree-clone"}><h1>View Project</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
+                    <Link className='flex' href={"https://github.com/AMAN02SS/linktree-clone"}><h1>View Project</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
                   </div>
                 </div>
               </div>
@@ -201,7 +201,7 @@ const Section3 = () => {
                 </div>
                 <div className=''>
                   <div className={`${BricolageGrotesque.className} text-green-400 font-bold text-xl md:text-2xl flex gap-2 hover:cursor-pointer`}>
-                    <Link href={"https://github.com/AMAN02SS/charitable-foundation"}><h1>View Journey</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
+                    <Link className='flex' href={"https://github.com/AMAN02SS/charitable-foundation"}><h1>View Journey</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
                   </div>
                 </div>
               </div>
@@ -243,7 +243,7 @@ const Section3 = () => {
                 </div>
                 <div className=''>
                   <div className={`${BricolageGrotesque.className} text-green-400 font-bold text-xl md:text-2xl flex gap-2 hover:cursor-pointer`}>
-                  <Link href={"https://github.com/AMAN02SS/Spotify_Music_Player"}><h1>View Project</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
+                  <Link className='flex' href={"https://github.com/AMAN02SS/Spotify_Music_Player"}><h1>View Project</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
                   </div>
                 </div>
               </div>
