@@ -3,6 +3,7 @@ import React from 'react'
 import { Lavishly_Yours, Bricolage_Grotesque } from "next/font/google";
 import { useState, useEffect, useRef } from 'react';
 import Carousel from './features/carousel';
+import Link from 'next/link';
 
 
 const LavishlyYours = Lavishly_Yours({
@@ -175,7 +176,7 @@ const Section3 = () => {
             <div className='flex flex-col md:flex-row gap-4 md:gap-5'>
               <div className='flex flex-col gap-3 md:gap-10'>
                 <div className='flex flex-col gap-5 md:gap-10'>
-                 <div>
+                  <div>
                     <h1 className={`${BricolageGrotesque.className} text-white text-3xl md:text-5xl w-fit md:w-200 md:leading-14`}>
                       <span className='text-green-400 font-semibold'>Helping Hands Foundation</span> :
                     </h1>
@@ -206,7 +207,7 @@ const Section3 = () => {
               </div>
               <div className='flex justify-center items-center pt-4 relative w-80 float-child'>
                 <img className='w-52 md:w-80 h-50 md:h-70 object-cover drop-shadow-2xl ' src="/img/moniterWB.png" alt="" />
-                <Carousel/>
+                <Carousel />
               </div>
             </div>
           </div>
@@ -249,6 +250,8 @@ const Section3 = () => {
             </div>
           </div>
         </div>
+        <Link href={"/components/projects"} ><div className='bg-[#282828] w-fit mx-auto py-2 px-4 rounded-2xl m-10 flex items-center text-white gap-1 border-2 border-gray-500 transition-all duration-700 ease-in-out hover:border-white hover:scale-110'>All projects <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right w-4 h-4"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></div></Link>
+
       </div>
     </div>
   )

@@ -62,8 +62,8 @@ const Navbar = () => {
           </div>
           <div className='flex md:gap-10 items-center'>
             <Link href={"https://drive.google.com/file/d/1y4t1DKVdOHZ8iQvsDSKcbDA63lAVfCUn/view?usp=sharing"} target="_blank"><li className='flex items-center gap-1 hover:cursor-pointer hover:text-green-400 hover:rounded-full hover:bg-gray-500 p-2 hover:transition-all duration-800 ease-in-out'><span><img src="/svg/downloadResume.svg" alt="" /></span> Resume</li></Link>
-            <Link href={"#work"}><li className='hidden lg:block hover:cursor-pointer'>Work</li></Link>
-            <Link href={"#blogs"} disabled><li className='hidden lg:block hover:cursor-pointer'>Blogs</li></Link>
+            <Link href={"/components/projects"}><li className='hidden lg:block hover:cursor-pointer'>Work</li></Link>
+            <Link href={"/components/blogs"} disabled><li className='hidden lg:block hover:cursor-pointer'>Blogs</li></Link>
             <Link href={"#about"}><li className='hidden lg:block hover:cursor-pointer'>About Me</li></Link>
           </div>
         </ul>

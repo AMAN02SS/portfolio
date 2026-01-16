@@ -2,6 +2,8 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import { Bricolage_Grotesque } from "next/font/google";
+import Link from 'next/link';
+
 
 const BricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -98,7 +100,7 @@ const Section6 = () => {
               </div>
             </div>
           </div>
-          <div className='bg-[#282828] w-fit mx-auto py-2 px-4 rounded-2xl m-10 flex items-center gap-1 border-2 border-gray-500 transition-all duration-700 ease-in-out hover:border-white hover:scale-110'>More Blog <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right w-4 h-4"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></div>
+          <Link href={"/components/blogs"} ><div className='bg-[#282828] w-fit mx-auto py-2 px-4 rounded-2xl m-10 flex items-center gap-1 border-2 border-gray-500 transition-all duration-700 ease-in-out hover:border-white hover:scale-110'>More Blog <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right w-4 h-4"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></div></Link>
         </div>
       </div>
     </div>
