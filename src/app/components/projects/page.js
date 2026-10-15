@@ -22,13 +22,32 @@ const project = () => {
 
   const [projects, setProjects] = useState([]);
 
+  // useEffect(() => {
+  //   fetch("/api/project")
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log("Project from API", data);
+  //       setProjects(data);
+  //     }).catch(err => console.error(err));
+  // }, []);
+
   useEffect(() => {
     fetch("/api/project")
-      .then(res => res.json())
+      .then(res => {
+        // Check if the server responded with an error code (like 500)
+        if (!res.ok) {
+          throw new Error(`Server responded with status ${res.status}`);
+        }
+        return res.json();
+      })
       .then(data => {
         console.log("Project from API", data);
         setProjects(data);
-      }).catch(err => console.error(err));
+      })
+      .catch(error => {
+        console.error("Error fetching projects:", error);
+        // Optional: setProjects([]) or show an error state to the user
+      });
   }, []);
 
 
@@ -55,7 +74,7 @@ const project = () => {
         <h1 id={"work"} className={`${BricolageGrotesque.className} font-bold text-5xl text-white text-center py-15`}>Projects</h1>
         <div className='flex flex-col justify-center items-center gap-10'>
           {projects.map((project, index) => (
-            <Link key={project._id} href={project.link}><div  ref={setRef(index)} className={`bg-[#282828] w-[90vw] md:w-[60vw] p-5 m-3 md:p-7 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visibleItems ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4 duration-1000"} delay-0 `}>
+            <Link key={project._id} href={project.link}><div ref={setRef(index)} className={`bg-[#282828] w-[90vw] md:w-[60vw] p-5 m-3 md:p-7 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visibleItems ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4 duration-1000"} delay-0 `}>
               <div className='flex flex-col md:flex-row md:justify-between justify-center gap-4 md:gap-5 group'>
                 <div className='flex flex-col md:flex-row gap-4'>
                   <div className='flex justify-center'>
