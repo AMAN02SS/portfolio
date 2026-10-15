@@ -36,6 +36,8 @@ jobs:
 
       - name: Build Next.js application
         run: npm run build
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
       - name: Prepare standalone deployment package
         run: |
