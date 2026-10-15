@@ -40,9 +40,19 @@ jobs:
         run: |
           mkdir -p .next/standalone/.next
           cp -R .next/static .next/standalone/.next/static
-          if [ -d public ]; then
-            cp -R public .next/standalone/public
-          fi
+          mkdir -p .next/standalone/public
+          cp -R public/. .next/standalone/public/
+
+      - name: Verify image exists in deployment package
+        run: |
+          echo "Source image:"
+          ls -l public/img/section1Pic3.jpg
+
+          echo "Deployed package image:"
+          ls -l .next/standalone/public/img/section1Pic3.jpg
+
+          test -f .next/standalone/server.js
+          test -f .next/standalone/public/img/section1Pic3.jpg
 
       - name: Login to Azure using OIDC
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
