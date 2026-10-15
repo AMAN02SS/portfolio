@@ -11,28 +11,53 @@ on:
 
 permissions:
   contents: read
+  id-token: write
+
 
 jobs:
-  build:
-    name: Install, Lint and Build
-    runs-on: ubuntu-latest
+  build-and-deploy:
+  name: Build and Deploy Next.js
+  runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+    - name: Install dependencies
+      run: npm ci
 
-      - name: Build Next.js application
-        # We pass a placeholder string to prevent Mongoose/MongoDB connection errors during build
-        env:
-          MONGODB_URI: "mongodb://localhost:27017/build-placeholder"
-          NEXTAUTH_SECRET: "placeholder-secret-for-build-purposes-only"
-        run: npm run build
+    # - name: Run lint
+    #   run: npm run lint
+
+    - name: Build Next.js application
+      run: npm run build
+
+    - name: Prepare standalone deployment package
+      run: |
+        mkdir -p .next/standalone/.next
+        cp -R .next/static .next/standalone/.next/static
+        if [ -d public ]; then
+          cp -R public .next/standalone/public
+        fi
+
+    - name: Login to Azure using OIDC
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: azure/login@v2
+      with:
+        client-id: ${{ vars.AZURE_CLIENT_ID }}
+        tenant-id: ${{ vars.AZURE_TENANT_ID }}
+        subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Deploy to Azure App Service
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: ${{ vars.AZURE_WEBAPP_NAME }}
+        package: .next/standalone
+
