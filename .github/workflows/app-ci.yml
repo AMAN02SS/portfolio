@@ -42,17 +42,22 @@ jobs:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: npm run build
 
-      - name: Upload production assets
+      - name: Prepare standalone production package
+        run: |
+          mkdir -p .next/standalone/.next
+          cp -r .next/static .next/standalone/.next/static
+
+          if [ -d public ]; then
+            cp -r public .next/standalone/public
+          fi  
+
+      - name: Upload production artifact
         uses: actions/upload-artifact@v4
         with:
           name: next-prod-build
-          path: |
-            .next/
-            public/
-            package.json
-            package-lock.json
-            next.config.js
-            # यदि आपकी कोई और ज़रूरी फ़ाइल/फोल्डर (जैसे prismic, components) हो तो यहाँ ऐड कर सकते हैं
+          path: .next/standalone/
+          if-no-files-found: error
+          retention-days: 1
 
   deploy:
     name: Deploy to Azure VM
@@ -69,51 +74,90 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: next-prod-build
+          path: deploy-package
+
+      - name: Validate deployment configuration
+        env:
+          VM_HOST: ${{ secrets.VM_HOST }}
+          VM_USER: ${{ secrets.VM_USER }}
+        run: |
+          if [[ ! "$VM_HOST" =~ ^[A-Za-z0-9.-]+$ ]]; then
+            echo "Invalid VM_HOST format"
+            exit 1
+          fi
+
+          if [[ ! "$VM_USER" =~ ^[a-z_][a-z0-9_-]*[$]?$ ]]; then
+            echo "Invalid VM_USER format"
+            exit 1
+          fi    
 
       - name: Configure SSH
         env:
           VM_SSH_KEY: ${{ secrets.VM_SSH_KEY }}
           VM_KNOWN_HOSTS: ${{ secrets.VM_KNOWN_HOSTS }}
         run: |
+          set -e
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
+
           printf '%s\n' "$VM_SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
+
           printf '%s\n' "$VM_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
-      - name: Copy application to Azure VM
+      - name: Copy standalone artifact to Azure VM
         env:
           VM_HOST: ${{ secrets.VM_HOST }}
           VM_USER: ${{ secrets.VM_USER }}
         run: |
-          # अब हम .next फोल्डर को भी एक्सक्लूड नहीं कर रहे हैं, क्योंकि वह पहले से रेडी है
+          set -e
           rsync -az --delete \
-            --exclude='.git/' \
-            --exclude='node_modules/' \
-            --exclude='.env*' \
-            --exclude='*.pem' \
-            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
-            ./ "$VM_USER@$VM_HOST:~/apps/nextjs-app/"
+            -e "ssh -i $HOME/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            deploy-package/ \
+            "$VM_USER@$VM_HOST:~/apps/nextjs-app/"
 
-      - name: Start application on VM (No Build Needed Here)
+      - name: Transfer MongoDB URI securely
         env:
           VM_HOST: ${{ secrets.VM_HOST }}
           VM_USER: ${{ secrets.VM_USER }}
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: |
-          ssh -i ~/.ssh/deploy_key \
+          set -euo pipefail
+
+          printf '%s' "$MONGODB_URI" | base64 -w0 | \
+            ssh -i "$HOME/.ssh/deploy_key" \
+              -o StrictHostKeyChecking=yes \
+              "$VM_USER@$VM_HOST" \
+              'umask 077
+               mkdir -p "$HOME/.config/nextjs-app"
+               cat > "$HOME/.config/nextjs-app/mongodb_uri.b64"
+               chmod 600 "$HOME/.config/nextjs-app/mongodb_uri.b64"'      
+
+      - name: Start or reload Next.js
+        env:
+          VM_HOST: ${{ secrets.VM_HOST }}
+          VM_USER: ${{ secrets.VM_USER }}
+        run: |
+          set -e
+
+          ssh -i "$HOME/.ssh/deploy_key" \
             -o StrictHostKeyChecking=yes \
             "$VM_USER@$VM_HOST" \
-            "set -e
-             cd ~/apps/nextjs-app
-             # सर्वर पर केवल ज़रूरी प्रोडक्शन पैकेजेस इंस्टॉल होंगे, कोई भारी बिल्ड नहीं चलेगा
-             npm install --omit=dev
-             
+            'set -e
+             APP_DIR="$HOME/apps/nextjs-app"
+             SECRET_FILE="$HOME/.config/nextjs-app/mongodb_uri.b64"
+
+             cd "$APP_DIR"
+             export PORT=3000
+             export HOSTNAME=127.0.0.1
+             export MONGODB_URI="$(base64 -d "$SECRET_FILE")"
+
              if pm2 describe nextjs-app >/dev/null 2>&1; then
-               # बिना डाउनटाइम के एप्लिकेशन्स को तुरंत रीलोड करें
-               MONGODB_URI='${MONGODB_URI}' pm2 reload nextjs-app
+               pm2 reload nextjs-app --update-env
              else
-               MONGODB_URI='${MONGODB_URI}' pm2 start npm --name nextjs-app -- start -- -p 3000
+               pm2 start server.js --name nextjs-app --cwd "$APP_DIR"
              fi
-             pm2 save"
+
+             unset MONGODB_URI
+             pm2 save'
