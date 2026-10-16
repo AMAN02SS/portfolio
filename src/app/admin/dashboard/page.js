@@ -143,10 +143,10 @@ const page = () => {
       <div className='flex justify-between px-10 py-10'>
         <div>
           <ul className='flex gap-10 justify-evenly items-center'>
-            <img src="/vercel.svg" alt="" width={24} height={24} />
-            <li className='inline-flex gap-2'><img src="/svg/Home.svg" alt="" /></li>
-            <li className='inline-flex gap-1'><img src="/svg/plus.svg" alt="" /> New</li>
-            <li><img src="/svg/message.svg" alt="" /></li>
+            <Image src="/vercel.svg" alt="" width={24} height={24} />
+            <li className='inline-flex gap-2'><Image src="/svg/Home.svg" alt="" /></li>
+            <li className='inline-flex gap-1'><Image src="/svg/plus.svg" alt="" /> New</li>
+            <li><Image src="/svg/message.svg" alt="" /></li>
           </ul>
         </div>
         <div className='flex gap-2 justify-evenly items-center'>

@@ -26,7 +26,7 @@ const Section1 = () => {
           <span>HI!</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>I'M</span>
         </div>
         <div className={`w-50 md:h-10 md:w-90 absolute z-2 top-20 md:top:150 transition-all duration-700 ease-out ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} delay-200`}>
-          <img className="rounded-full h-70 md:h-140 object-cover" src="/img/section1Pic3.jpg" alt="" />
+          <Image className="rounded-full h-70 md:h-140 object-cover" src="/img/section1Pic3.jpg" alt="" />
         </div>
         <div className={`${bebasNeue.className} text-[5.75rem] md:text-[20.75rem] text-center text-[#ffffff] absolute z-3 top-35 md:top-95 leading-100 transition-all duration-700 ease-out ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} delay-300`}>
           <span>AMAN SINGH</span>

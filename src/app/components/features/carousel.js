@@ -45,7 +45,7 @@ export default function ImageCarousel() {
       >
         {images.map((img, index) => (
           <div className="carousel-slide" key={index}>
-            <img src={img} alt="" />
+            <Image src={img} alt="" />
           </div>
         ))}
       </div>

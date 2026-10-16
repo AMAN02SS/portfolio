@@ -122,12 +122,12 @@ const Section3 = () => {
                 </div>
                 <div className=''>
                   <div className={`${BricolageGrotesque.className} text-green-400 font-bold text-xl md:text-2xl flex gap-2 hover:cursor-pointer`}>
-                    <Link className='flex' href={"https://www.bitglim.com/"}><h1>View Journey</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
+                    <Link className='flex' href={"https://www.bitglim.com/"}><h1>View Journey</h1><Image className='' src="/svg/arrow.svg" alt="" /></Link>
                   </div>
                 </div>
               </div>
               <div className='flex justify-center'>
-                <img className='h-50 md:h-100 object-cover drop-shadow-2xl  float-child' src="/img/projectScreenWB.png" alt="" />
+                <Image className='h-50 md:h-100 object-cover drop-shadow-2xl  float-child' src="/img/projectScreenWB.png" alt="" />
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@ const Section3 = () => {
           <div ref={ref2} className={`bg-[#282828] p-5 m-3 md:p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible2 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4"} delay-0`}>
             <div className='flex flex-col md:flex-row gap-2 md:gap-5 items-center '>
               <div className='w-50 h-50  md:w-80 md:h-80 flex justify-center items-center'>
-                <img className='w-full h-full md:w-100 md:h-100 object-contain drop-shadow-2xl float-child' src="/img/project1.png" alt="" />
+                <Image className='w-full h-full md:w-100 md:h-100 object-contain drop-shadow-2xl float-child' src="/img/project1.png" alt="" />
               </div>
               <div className='flex flex-col gap-5 md:gap-10'>
                 <div className='flex flex-col gap-5 md:gap-10'>
@@ -165,7 +165,7 @@ const Section3 = () => {
                 </div>
                 <div className=''>
                   <div className={`${BricolageGrotesque.className} text-green-400 font-bold text-xl md:text-2xl flex gap-2 hover:cursor-pointer`}>
-                    <Link className='flex' href={"https://github.com/AMAN02SS/linktree-clone"}><h1>View Project</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
+                    <Link className='flex' href={"https://github.com/AMAN02SS/linktree-clone"}><h1>View Project</h1><Image className='' src="/svg/arrow.svg" alt="" /></Link>
                   </div>
                 </div>
               </div>
@@ -201,12 +201,12 @@ const Section3 = () => {
                 </div>
                 <div className=''>
                   <div className={`${BricolageGrotesque.className} text-green-400 font-bold text-xl md:text-2xl flex gap-2 hover:cursor-pointer`}>
-                    <Link className='flex' href={"https://github.com/AMAN02SS/charitable-foundation"}><h1>View Journey</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
+                    <Link className='flex' href={"https://github.com/AMAN02SS/charitable-foundation"}><h1>View Journey</h1><Image className='' src="/svg/arrow.svg" alt="" /></Link>
                   </div>
                 </div>
               </div>
               <div className='flex justify-center items-center pt-4 relative w-80 float-child'>
-                <img className='w-52 md:w-80 h-50 md:h-70 object-cover drop-shadow-2xl ' src="/img/moniterWB.png" alt="" />
+                <Image className='w-52 md:w-80 h-50 md:h-70 object-cover drop-shadow-2xl ' src="/img/moniterWB.png" alt="" />
                 <Carousel />
               </div>
             </div>
@@ -215,7 +215,7 @@ const Section3 = () => {
           <div ref={ref4} className={`bg-[#282828] px-5 py-10 m-3 md:p-14 rounded-3xl hover:cursor-pointer float-parent hover:scale-95 hover:bg-[#1c1c1c] transition-all duration-1000 ease-out will-change-[opacity,filter,transform] ${visible4 ? "opacity-100 blur-0 translate-y-0" : "opacity-0 blur-md translate-y-4"} delay-0`}>
             <div className='flex md:flex-row flex-col items-center gap-2 md:gap-10'>
               <div className='w-50 md:w-80 h-50 md:h-80 flex justify-center items-center'>
-                <img className='rounded-full w-full md:w-100 h-full md:h-100 object-cover drop-shadow-2xl float-child' src="/img/spotify.png" alt="" />
+                <Image className='rounded-full w-full md:w-100 h-full md:h-100 object-cover drop-shadow-2xl float-child' src="/img/spotify.png" alt="" />
               </div>
               <div className='flex flex-col gap-5 md:gap-10'>
                 <div className='flex flex-col gap-5 md:gap-10'>
@@ -243,7 +243,7 @@ const Section3 = () => {
                 </div>
                 <div className=''>
                   <div className={`${BricolageGrotesque.className} text-green-400 font-bold text-xl md:text-2xl flex gap-2 hover:cursor-pointer`}>
-                  <Link className='flex' href={"https://github.com/AMAN02SS/Spotify_Music_Player"}><h1>View Project</h1><img className='' src="/svg/arrow.svg" alt="" /></Link>
+                  <Link className='flex' href={"https://github.com/AMAN02SS/Spotify_Music_Player"}><h1>View Project</h1><Image className='' src="/svg/arrow.svg" alt="" /></Link>
                   </div>
                 </div>
               </div>

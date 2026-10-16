@@ -34,7 +34,7 @@ export default function ProfileDropdown() {
                 type="button"
             >
                 <h1>Aman, Admin</h1>
-                <img src="/svg/avtar.svg" alt="" className="w-5 h-5 rounded-full" />
+                <Image src="/svg/avtar.svg" alt="" className="w-5 h-5 rounded-full" />
                 <svg
                     className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`}
                     xmlns="http://www.w3.org/2000/svg"

@@ -78,7 +78,7 @@ const project = () => {
               <div className='flex flex-col md:flex-row md:justify-between justify-center gap-4 md:gap-5 group'>
                 <div className='flex flex-col md:flex-row gap-4'>
                   <div className='flex justify-center'>
-                    <img className='h-30 w-50 md:h-30 object-container drop-shadow-2xl flex justify-center items-center' src={project.image || "/img/project1.png"} alt="" />
+                    <Image className='h-30 w-50 md:h-30 object-container drop-shadow-2xl flex justify-center items-center' src={project.image || "/img/project1.png"} alt="" />
                   </div>
                   <div className='flex flex-col gap-3 md:gap-5 w-full '>
                     <div className='flex flex-col gap-5 md:gap-5'>

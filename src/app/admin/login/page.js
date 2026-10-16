@@ -55,7 +55,7 @@ const page = () => {
                                 <input onChange={(e)=>setPassword(e.target.value)} className='px-5 w-full border-2 rounded-full h-15 font-semibold' type="password" value={password} required />
                             </div>
                             <div className='flex justify-center items-center h-10'>
-                                <button disabled={loading} className='hover:w-18 hover:h-18 hover:transition-all duration-500 ease-in-out rounded-full border-white border bg-[linear-gradient(60deg,_rgb(247,_149,_51),_rgb(243,_112,_85),_rgb(239,_78,_123),_rgb(161,_102,_171),_rgb(80,_115,_184),_rgb(16,_152,_173),_rgb(7,_179,_155),_rgb(111,_186,_130))]   w-15 h-15 flex justify-center items-center'>{loading ? <img src="/svg/logging.svg" alt="" /> : <img src="/svg/rightarrow.svg" className='fill-black' alt="" />}</button>
+                                <button disabled={loading} className='hover:w-18 hover:h-18 hover:transition-all duration-500 ease-in-out rounded-full border-white border bg-[linear-gradient(60deg,_rgb(247,_149,_51),_rgb(243,_112,_85),_rgb(239,_78,_123),_rgb(161,_102,_171),_rgb(80,_115,_184),_rgb(16,_152,_173),_rgb(7,_179,_155),_rgb(111,_186,_130))]   w-15 h-15 flex justify-center items-center'>{loading ? <Image src="/svg/logging.svg" alt="" /> : <Image src="/svg/rightarrow.svg" className='fill-black' alt="" />}</button>
                             </div>
                         </div>
                     </form>

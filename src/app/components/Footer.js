@@ -10,11 +10,11 @@ const Footer = () => {
       <div className='flex flex-col gap-10 items-center'>
         <h1 className='text-gray-500 hover:text-[#a8a8a8] transition-all duration-700 '><a href="mailto:aman.s.s.official@gmail.com">aman.s.s.official@gmail.com</a></h1>
         <div className='grid grid-cols-5 gap-5'>
-          <Link href={"https://api.whatsapp.com/qr/533YN7YV2OXLA1"}><img className='w-10' src="/svg/whatsapp.svg" alt="" /></Link>
-          <Link href={"https://www.linkedin.com/in/aman-singh-sikarwar-02/"}><img className='w-10' src="/svg/linkedin.svg" alt="" /></Link>
-          <Link href={"https://github.com/AMAN02SS/"}><img className='w-10' src="/svg/github.svg" alt="" /></Link>
-          <Link href={"https://www.instagram.com/aman.__s__sikarwar/"}><img className='w-10' src="/svg/instagram.svg" alt="" /></Link>
-          <Link href={"https://x.com/Aman_S_Sikarwar"}><img className='w-10' src="/svg/X.svg" alt="" /></Link>
+          <Link href={"https://api.whatsapp.com/qr/533YN7YV2OXLA1"}><Image className='w-10' src="/svg/whatsapp.svg" alt="" /></Link>
+          <Link href={"https://www.linkedin.com/in/aman-singh-sikarwar-02/"}><Image className='w-10' src="/svg/linkedin.svg" alt="" /></Link>
+          <Link href={"https://github.com/AMAN02SS/"}><Image className='w-10' src="/svg/github.svg" alt="" /></Link>
+          <Link href={"https://www.instagram.com/aman.__s__sikarwar/"}><Image className='w-10' src="/svg/instagram.svg" alt="" /></Link>
+          <Link href={"https://x.com/Aman_S_Sikarwar"}><Image className='w-10' src="/svg/X.svg" alt="" /></Link>
         </div>
       </div>
 

@@ -128,37 +128,37 @@ const Section6 = () => {
           <h1 className={`${BricolageGrotesque.className} font-bold text-2xl text-white text-center`}>Technical Skills</h1>
           <div className='w-screen md:w-full my-10 md:my-25 grid grid-cols-2 md:grid-cols-2 flex-col justify-center gap-2 md:gap-10'>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/html5.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
+              <Image src="/img/skills/html5.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>HTML</h1>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/css3.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
+              <Image src="/img/skills/css3.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>CSS</h1>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/nodejs.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
+              <Image src="/img/skills/nodejs.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>Node</h1>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/javascript.png" alt="" className='rounded-full md:rounded-none w-10 h-10 md:w-24 md:h-24' />
+              <Image src="/img/skills/javascript.png" alt="" className='rounded-full md:rounded-none w-10 h-10 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>Javascript</h1>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/python.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
+              <Image src="/img/skills/python.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>Python</h1>
               </div>
             </div>
             <div className='md:w-100 h-30 flex items-center justify-center gap-1 bg-[#282828] rounded-4xl border-2 border-transparent transition-all duration-500 ease-in-out hover:border-dashed hover:border-white hover:scale-110'>
-              <img src="/img/skills/react.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
+              <Image src="/img/skills/react.png" alt="" className='w-20 h-20 md:w-24 md:h-24' />
               <div>
                 <h1 className={`${BricolageGrotesque.className} font-semibold text-2xl`}>React</h1>
               </div>
