@@ -53,6 +53,7 @@ jobs:
         env:
           VM_SSH_KEY: ${{ secrets.VM_SSH_KEY }}
           VM_KNOWN_HOSTS: ${{ secrets.VM_KNOWN_HOSTS }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
@@ -67,6 +68,7 @@ jobs:
         env:
           VM_HOST: ${{ secrets.VM_HOST }}
           VM_USER: ${{ secrets.VM_USER }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: |
           rsync -az --delete \
             --exclude='.git/' \
@@ -81,6 +83,7 @@ jobs:
         env:
           VM_HOST: ${{ secrets.VM_HOST }}
           VM_USER: ${{ secrets.VM_USER }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: |
           ssh -i ~/.ssh/deploy_key \
             -o StrictHostKeyChecking=yes \
