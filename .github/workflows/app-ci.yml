@@ -1,25 +1,27 @@
-name: Next.js Application CI
+
+name: Next.js Application CI-CD
 
 on:
   push:
     branches:
       - main
+
   pull_request:
     branches:
       - main
+
   workflow_dispatch:
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
-  build-and-deploy:
-    name: Build and Deploy Next.js
+  ci:
+    name: Test and Build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout source code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -31,40 +33,65 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Next.js application
+      - name: Run lint
+        run: npm run lint
+
+      - name: Build application
         run: npm run build
+
+  deploy:
+    name: Deploy to Azure VM
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
         env:
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
-
-      - name: Prepare standalone deployment package
+          VM_SSH_KEY: ${{ secrets.VM_SSH_KEY }}
+          VM_KNOWN_HOSTS: ${{ secrets.VM_KNOWN_HOSTS }}
         run: |
-          mkdir -p .next/standalone/.next
-          cp -R .next/static .next/standalone/.next/static
-          mkdir -p .next/standalone/public
-          cp -R public/. .next/standalone/public/
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
 
-      - name: Verify image exists in deployment package
+          printf '%s\n' "$VM_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          printf '%s\n' "$VM_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Copy application to Azure VM
+        env:
+          VM_HOST: ${{ secrets.VM_HOST }}
+          VM_USER: ${{ secrets.VM_USER }}
         run: |
-          echo "Source image:"
-          ls -l public/img/section1Pic3.jpg
+          rsync -az --delete \
+            --exclude='.git/' \
+            --exclude='node_modules/' \
+            --exclude='.next/' \
+            --exclude='.env*' \
+            --exclude='*.pem' \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            ./ "$VM_USER@$VM_HOST:~/apps/nextjs-app/"
 
-          echo "Deployed package image:"
-          ls -l .next/standalone/public/img/section1Pic3.jpg
-
-          test -f .next/standalone/server.js
-          test -f .next/standalone/public/img/section1Pic3.jpg
-
-      - name: Login to Azure using OIDC
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: azure/login@v2
-        with:
-          client-id: ${{ vars.AZURE_CLIENT_ID }}
-          tenant-id: ${{ vars.AZURE_TENANT_ID }}
-          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
-
-      - name: Deploy to Azure App Service
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: ${{ vars.AZURE_WEBAPP_NAME }}
-          package: .next/standalone
+      - name: Build and restart application on VM
+        env:
+          VM_HOST: ${{ secrets.VM_HOST }}
+          VM_USER: ${{ secrets.VM_USER }}
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+            -o StrictHostKeyChecking=yes \
+            "$VM_USER@$VM_HOST" \
+            'set -e
+             cd ~/apps/nextjs-app
+             npm ci
+             npm run build
+             if pm2 describe nextjs-app >/dev/null 2>&1; then
+               pm2 reload nextjs-app
+             else
+               pm2 start npm --name nextjs-app -- start -- -p 3000
+             fi
+             pm2 save'
