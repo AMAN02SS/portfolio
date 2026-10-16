@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from 'next/image';
 
 const images = ["/img/carousel/home.png","/img/carousel/login.png","/img/carousel/dashboard.png","/img/carousel/donation.png","/img/carousel/razorpay.png"]
 

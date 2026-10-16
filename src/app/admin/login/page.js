@@ -5,6 +5,7 @@ import { Bricolage_Grotesque } from 'next/font/google';
 import {signIn} from "next-auth/react"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const BricolageGrotesque = Bricolage_Grotesque({
     subsets: ["latin"],

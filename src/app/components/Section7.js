@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import { Bricolage_Grotesque } from "next/font/google";
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const BricolageGrotesque = Bricolage_Grotesque({

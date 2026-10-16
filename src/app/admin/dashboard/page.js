@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image';
 import React, { useEffect } from 'react'
 import Dropdown from './dropdown'
 import { useState } from 'react'

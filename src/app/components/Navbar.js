@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from 'next/image';
 
 const Navbar = () => {
   const [showGoTop, setShowGoTop] = useState(false);

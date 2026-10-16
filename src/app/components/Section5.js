@@ -3,6 +3,7 @@ import React from 'react'
 import { Lavishly_Yours, Bricolage_Grotesque } from "next/font/google";
 import { useState, useEffect, useRef } from 'react';
 import Carousel from './features/carousel';
+import Image from 'next/image';
 
 const LavishlyYours = Lavishly_Yours({
     subsets: ["latin"],
